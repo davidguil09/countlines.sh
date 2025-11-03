@@ -1,11 +1,17 @@
 
-file="$1"
-lines=$(cat $file | wc -l)
+files="$@"
 
-echo $file
-echo $lines
-if [[ $lines -ge 2 ]]; then
-	echo "more than 1 line"
-else
-	echo there are $lines lines
-fi
+
+
+for i in $files
+do
+	lines=$(cat $i | wc -l)	
+	echo Filename: $i
+	echo Number of lines: $lines
+	if [[ $lines -ge 2 ]]; then
+		echo "More than 1 line"
+	else
+		echo There are $lines lines
+	fi
+	echo ""
+done
